@@ -9,10 +9,10 @@ class CreateGenresTable extends Migration
     public function up()
     {
         Schema::create('genres', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('name', 255);
+            $table->id();
+            $table->string('name');
             $table->timestamps();
-        });
+        });        
     }
 
     public function down()

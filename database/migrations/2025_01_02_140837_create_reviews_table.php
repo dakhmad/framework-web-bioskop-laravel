@@ -13,9 +13,8 @@ class CreateReviewsTable extends Migration
             $table->text('review');
             $table->unsignedTinyInteger('rating')->default(1);
             $table->uuid('user_id');
-            $table->uuid('movie_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
+            $table->foreignId('movie_id')->constrained('movies')->onDelete('cascade');
             $table->timestamps();
         });
     }

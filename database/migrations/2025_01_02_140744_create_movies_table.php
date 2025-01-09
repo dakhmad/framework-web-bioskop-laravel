@@ -9,14 +9,13 @@ class CreateMoviesTable extends Migration
     public function up()
     {
         Schema::create('movies', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('title', 255);
+            $table->id();
+            $table->string('title');
             $table->text('synopsis');
-            $table->string('poster', 255)->nullable();
-            $table->year('year');
-            $table->boolean('available')->default(true);
-            $table->uuid('genre_id');
-            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
+            $table->string('poster');
+            $table->integer('year');
+            $table->boolean('available');
+            $table->foreignId('genre_id')->constrained('genres')->onDelete('cascade'); // Foreign key
             $table->timestamps();
         });
     }

@@ -9,12 +9,14 @@ class GenreSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('genres')->insert([
-            ['id' => fake()->uuid, 'name' => 'Action', 'created_at' => now()],
-            ['id' => fake()->uuid, 'name' => 'Comedy', 'created_at' => now()],
-            ['id' => fake()->uuid, 'name' => 'Drama', 'created_at' => now()],
-            ['id' => fake()->uuid, 'name' => 'Horror', 'created_at' => now()],
-            ['id' => fake()->uuid, 'name' => 'Sci-Fi', 'created_at' => now()],
-        ]);
+        $genres = [
+            ['name' => 'Action', 'created_at' => now()],
+            ['name' => 'Comedy', 'created_at' => now()],
+            ['name' => 'Drama', 'created_at' => now()],
+            ['name' => 'Horror', 'created_at' => now()],
+            ['name' => 'Sci-Fi', 'created_at' => now()],
+        ];
+
+        DB::table('genres')->insert($genres);
     }
 }

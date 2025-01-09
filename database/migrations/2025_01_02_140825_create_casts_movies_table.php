@@ -9,11 +9,10 @@ class CreateCastsMoviesTable extends Migration
     public function up()
     {
         Schema::create('cast_movies', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('movie_id');
+            $table->id();
             $table->uuid('cast_id');
-            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
             $table->foreign('cast_id')->references('id')->on('casts')->onDelete('cascade');
+            $table->foreignId('movie_id')->constrained('movies')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -23,5 +22,3 @@ class CreateCastsMoviesTable extends Migration
         Schema::dropIfExists('cast_movies');
     }
 }
-
-//test
